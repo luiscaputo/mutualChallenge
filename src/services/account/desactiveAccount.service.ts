@@ -15,11 +15,13 @@ export default class DesactiveAccount {
             if (verifyIfExistsAccount) {
                 const accountDesactiveStatus = verifyIfExistsAccount.status;
                 if (accountDesactiveStatus === "Active") {
+                    const disabledDate = Date.now();
                     await accountRepository
                         .createQueryBuilder()
                         .update()
                         .set({
-                            status: "Desactive"
+                            status: "Desactive",
+                            disabledAt: disabledDate
                         })
                         .where("id = :id", { id: idAccountDesactive })
                         .execute();

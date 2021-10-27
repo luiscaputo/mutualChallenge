@@ -7,13 +7,12 @@ export default class ActiveAccountController {
     async handle(request: Request<string>, response: Response<AppResponse<Account[]>>) {
         try {
             const { idAccountActive } = request.body;
-
             if (!idAccountActive) {
                 return response.status(400)
                     .json({
                         success: false,
                         message: "This account not Exists"
-                    })
+                    });
             }
             const activeAccountService = new ActiveAccount();
 
@@ -24,7 +23,7 @@ export default class ActiveAccountController {
                 .json({
                     success: true,
                     message: activingAccount
-                })
+                });
         } catch (err) {
             return response.status(400)
                 .json({

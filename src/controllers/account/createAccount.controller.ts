@@ -31,7 +31,6 @@ export default class CreateAccountController {
             return response.status(201)
                 .json({
                     success: true,
-                    message: "Account Created",
                     data: createAccount
                 });
         } catch (err) {

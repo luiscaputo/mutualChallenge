@@ -1,7 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class account1635317811644 implements MigrationInterface {
-
+export class account1635356218538 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
@@ -45,8 +44,8 @@ export class account1635317811644 implements MigrationInterface {
                     },
                     {
                         name: "disabled_at",
-                        type: "timestamp",
-                        default: "now()",
+                        type: "datetime",
+                        isNullable: true
                     }
                 ]
             })
@@ -56,5 +55,4 @@ export class account1635317811644 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable("account");
     }
-
 }

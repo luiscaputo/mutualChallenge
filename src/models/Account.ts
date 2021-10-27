@@ -21,7 +21,7 @@ export class Account {
   @Column("varchar", { name: "status", length: 15 })
   status: string;
 
-  @Column("timestamp", { name: "created_at", default: () => "now()" })
+  @Column("datetime", { name: "created_at", default: () => "CURRENT_TIMESTAMP" })
   createdAt: NonNullable<unknown>;
 
   @Column("datetime", { name: "disabled_at", nullable: true })

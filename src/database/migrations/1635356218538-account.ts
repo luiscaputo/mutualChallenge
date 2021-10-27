@@ -39,7 +39,7 @@ export class account1635356218538 implements MigrationInterface {
                     },
                     {
                         name: "created_at",
-                        type: "timestamp",
+                        type: "datetime",
                         default: "now()",
                     },
                     {

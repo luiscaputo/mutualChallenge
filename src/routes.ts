@@ -1,7 +1,8 @@
 import { Router } from "express";
+import accountRoutes from "./routes/account.routes";
 
 const routes = Router();
-
+// Base Routes
 routes.get('/', (request, response) => {
     response.json({
         success: true,
@@ -11,4 +12,8 @@ routes.get('/', (request, response) => {
     });
 });
 
+// All Routes
+routes.use(accountRoutes);
+
+// Exporting routes
 export default routes;

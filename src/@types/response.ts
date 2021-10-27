@@ -1,6 +1,6 @@
 import { Account } from "../models/Account";
 
-export interface IUsers {
+export interface IAccount {
     id?: Account,
     nome?: Account,
     cpf?: Account,

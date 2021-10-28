@@ -1,10 +1,10 @@
 import app from "./app";
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 //Listen Port
 if (require.main == module) {
-    app.listen(8080, () => {
+    app.listen(PORT, () => {
         console.log(`SERVER RUNNING ON PORT [--- ${PORT} ---]`);
     });
 }

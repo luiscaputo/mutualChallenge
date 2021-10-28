@@ -1,5 +1,12 @@
+import ListAccountsController from "../controllers/account/listAccounts.controller";
 import { Account } from "../models/Account";
 import CreateAccount from "../services/account/createAccount.service"
+
+describe("testeCount", () => {
+    it("testando", () => {
+        expect(2 + 2).toBe(4)
+    });
+});
 
 describe("Create Account", () => {
     it("Need Create a new Account", async () => {
@@ -21,4 +28,11 @@ describe("Create Account", () => {
         expect(account).toHaveProperty("id");
         expect(accountData.nome).toBe("Teste");
     });
+});
+describe("Lista Todas Contas", () => {
+    it("Listando todas as contas", async () => {
+        const listAccountsController = new ListAccountsController();
+        const listing = listAccountsController.handle;
+        expect(listing.length > 0).toBe(true);
+    })
 })

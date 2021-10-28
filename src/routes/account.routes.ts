@@ -4,6 +4,7 @@ import AlterAccountController from "../controllers/account/alterAccount.controll
 import CreateAccountController from "../controllers/account/createAccount.controller";
 import DesactiveAccountController from "../controllers/account/disableAccount.controller";
 import ListAccountsController from "../controllers/account/listAccounts.controller";
+import { createAccount } from "../middleweres/createAccount";
 
 const router = Router();
 // Exporting controllers
@@ -15,7 +16,7 @@ const alterAccountController = new AlterAccountController();
 
 // Creating Routes
 router.get("/account/listAll", listAccountController.handle)
-router.post("/account/create", createAccountController.handle);
+router.post("/account/create", createAccount, createAccountController.handle);
 router.put("/account/active", activeAccountController.handle);
 router.put("/account/desactive", desactiveAccountController.handle);
 router.put("/account/alter", alterAccountController.handle);

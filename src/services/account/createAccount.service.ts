@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getCustomRepository } from "typeorm";
 import AccountRepository from "../../repositories/account.repositories";
+import VerifyDDD from "../verifyDDD.service";
 
 export interface ICreateAccount {
     nome: string,
@@ -19,15 +20,12 @@ export default class CreateAccount {
             if (alreadyExistsCpf) {
                 return 'Already exist this cpf on database';
             }
-            // validate DDD using brasil api route
-            const getDDDInPhone = phone[0] + phone[1];
-            // running in api to verifyDDD
-            const verifyDDD = await axios.get(`
-                https://brasilapi.com.br/api/ddd/v1/${getDDDInPhone}
-            `);
-            if (!(verifyDDD.status === 200)) {
-                return 'Invalid DDD';
+            if (cpf.length != 12) {
+                return 'Invalid cpf';
             }
+
+            const verifyDDD = new VerifyDDD();
+            await verifyDDD.execute(phone);
             const createAccount = accountRepository.create({
                 nome,
                 cpf,

@@ -22,6 +22,7 @@ export default class CreateAccountController {
                     });
             }
 
+
             const createAccount = await createAccountService.execute({
                 nome,
                 cpf,

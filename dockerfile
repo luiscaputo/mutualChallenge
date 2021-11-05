@@ -3,10 +3,10 @@ FROM node:alpine
 WORKDIR /usr/app
 
 COPY package*.json ./
-RUN npm install
+RUN yarn
 
 COPY . .
 
 EXPOSE 8080
 
-CMD ["npm", "dev"]
+CMD ["yarn", "dev"]
